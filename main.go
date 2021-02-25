@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-  accountData, err := readFile()
+  accountData, err := readFile("data.json")
   if err != nil {
     fmt.Println(err)
   }
@@ -71,8 +71,8 @@ func main() {
   fmt.Printf("Working Capital Ratio: %.1f%%\n", (float32(assets) / float32(liabilities) * 100))
 }
 
-func readFile() ([]AccountData, error) {
-  jsonFile, err := os.Open("data.json")
+func readFile(filename string) ([]AccountData, error) {
+  jsonFile, err := os.Open(filename)
   if err != nil {
     return nil, err
   }
