@@ -10,7 +10,7 @@ type AccountData struct {
 	AccountCurrency   string  `json:"account_currency"`
 	AccountIdentifier string  `json:"account_identifier"`
 	AccountStatus     string  `json:"account_status"`
-	ValueType         string  `json:"credit"`
+	ValueType         string  `json:"value_type"`
 	AccountName       string  `json:"account_name"`
 	AccountType       string  `json:"account_type"`
 	AccountTypeBank   string  `json:"account_type_bank"`
