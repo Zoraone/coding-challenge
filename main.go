@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/leekchan/accounting"
 )
 
 func main() {
@@ -61,11 +63,12 @@ func main() {
 
   netProfit := revenue - expenses
 
-  fmt.Println(revenue)
-  fmt.Println(expenses)
-  fmt.Println(float64(grossProfit) / float64(revenue))
-  fmt.Println(float64(netProfit) / float64(revenue))
-  fmt.Printf("%.1f%%", (float32(assets) / float32(liabilities) * 100))
+  ac := accounting.Accounting{Symbol: "$"}
+  fmt.Printf("Revenue: %s\n", ac.FormatMoney(float32(revenue)/100.0))
+  fmt.Printf("Expenses: %s\n", ac.FormatMoney(float32(expenses)/100.0))
+  fmt.Printf("Gross Profit Margin: %.1f%%\n", (float64(grossProfit) / float64(revenue) * 100))
+  fmt.Printf("Net Profit Margin: %.1f%%\n", (float64(netProfit) / float64(revenue) * 100))
+  fmt.Printf("Working Capital Ratio: %.1f%%\n", (float32(assets) / float32(liabilities) * 100))
 }
 
 func readFile() ([]AccountData, error) {
